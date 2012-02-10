@@ -1,0 +1,5 @@
+.DS_Store
+.Trash
+.project
+*.pyc
+.cache_rake_t
