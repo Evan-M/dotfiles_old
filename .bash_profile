@@ -1,0 +1,8 @@
+# Load .profile
+source "$HOME/.profile"
+
+# Load ~/.bashrc if it exists
+if [ -f "$HOME/.bashrc" ]; then
+  source "$HOME/.bashrc"
+fi
+
