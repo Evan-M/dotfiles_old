@@ -16,6 +16,7 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # Customize the bash prompt
+export RUBY_VERSION_IN_PROMPT=true
 if [ -f "$HOME/.bash_prompt" ]; then
   source "$HOME/.bash_prompt"
 fi

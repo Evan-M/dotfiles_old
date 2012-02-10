@@ -58,11 +58,11 @@ bash_prompt() {
 
   # Set a base prompt
   if [ $UID -eq "0" ]; then
-    local UC=$R   # root's color
-    PS1="$UC # "  # Use a '#' sign to indicate a root shell
+    local UC=$R           # root's color
+    PS1="$UC # ${NONE} "  # Use a '#' sign to indicate a root shell
   else
-    local UC=$G   # user's color
-    PS1="$UC $ "  # Use a '$' sign to indicate a non-root shell
+    local UC=$W           # user's color
+    PS1="$UC $ ${NONE} "  # Use a '$' sign to indicate a non-root shell
   fi
 
   # Add git info to prompt:
@@ -74,11 +74,12 @@ bash_prompt() {
   PS1="$UC\u$W@$Y\h$W:$EMY\w$PS1"
 
   # Add ruby version to prompt:
-  if command -v rvm &>/dev/null; then
-    PS1="$G\$(__my_rvm_ruby_version)$PS1"
-  elif command -v rbenv &>/dev/null; then
-    PS1="$G\$(__my_rbenv_ruby_version)$PS1"
-  else
+  if [ $RUBY_VERSION_IN_PROMPT ] ; then
+    if command -v rvm &>/dev/null; then
+      PS1="$G\$(__my_rvm_ruby_version)$PS1"
+    elif command -v rbenv &>/dev/null; then
+      PS1="$G\$(__my_rbenv_ruby_version)$PS1"
+    fi
   fi
 }
 
